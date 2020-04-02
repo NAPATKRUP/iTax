@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ภงด.com</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background: rgb(37, 37, 37);
+        }
+        .text-title {
+            color: white;
+            font-size: 70px;
+        }
+        .centerpage {
+            display: flex;
+            align-content: center;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .centerbox {
+            display: flex;
+            align-content: center;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 32px;
+        }
+        .myrow {
+            height: 100px;
+        }
+        .input-lg {
+            font-size: 32px;
+        }
+        .input-md {
+            font-size: 28px;
+        }
+        button {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container centerpage">
+        <center><h1 class="m-4 text-title">ภ.ง.ด. ออนไลน์</h1></center>
+        <div class="mt-4 row myrow">
+            <div class="col-9">
+                <input type="text" name="myInput" id="myInput" placeholder="เลข ภ.ง.ด. 13 หลัก" class="h-100 input-lg form-control rounded">
+            </div>
+            <div class="col-3">
+                <button onclick="sendData()" class="h-100 input-md btn btn-primary rounded">ยืนยัน</button>
+            </div>
+        </div>
+        <div class="row myrow mt-4">
+            <div class="col-9">
+                <h2 class="mt-2 h-100 form-control text-secondary rounded centerbox" id="result">ผลลัพธ์</h2>
+            </div>
+            <div class="col-3">
+                <button onclick="copyToClipboard('h2')" class="h-100 input-md btn btn-warning rounded">คัดลอก</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            $("#copyText").text("Copied");
+        }
+        function sendData() {
+            var text = document.getElementById('myInput').value
+            var outshow = text[0] + " " + text.slice(1,5) + " " + text.slice(5,10) + text.slice(10,12) + " " + text[12]
+            document.getElementById("result").innerText = outshow
+        }
+    </script>
+</body>
+</html>
