@@ -45,7 +45,7 @@
         <center><h1 class="m-4 text-title">ภ.ง.ด. ออนไลน์</h1></center>
         <div class="mt-4 row myrow">
             <div class="col-9">
-                <input type="text" name="myInput" id="myInput" placeholder="เลข ภ.ง.ด. 13 หลัก" class="h-100 input-lg form-control rounded">
+                <input type="text" name="myInput" id="myInput" placeholder="เลข ภ.ง.ด. 13 หลัก" class="h-100 input-lg form-control rounded" maxlength="13">
             </div>
             <div class="col-3">
                 <button onclick="sendData()" class="h-100 input-md btn btn-primary rounded">ยืนยัน</button>
@@ -53,10 +53,10 @@
         </div>
         <div class="row myrow mt-4">
             <div class="col-9">
-                <h2 class="mt-2 h-100 form-control text-secondary rounded centerbox" id="result">ผลลัพธ์</h2>
+                <input class="mt-2 h-100 form-control text-secondary rounded centerbox" id="result" placeholder="ผลลัพธ์" disabled>
             </div>
             <div class="col-3">
-                <button onclick="copyToClipboard('h2')" class="h-100 input-md btn btn-warning rounded">คัดลอก</button>
+                <button onclick="copyToClipboard('result')" class="h-100 input-md btn btn-warning rounded">คัดลอก</button>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
         function copyToClipboard(element) {
             var $temp = $("<input>");
             $("body").append($temp);
-            $temp.val($(element).text()).select();
+            $temp.val($(element).value).select();
             document.execCommand("copy");
             $temp.remove();
             $("#copyText").text("Copied");
@@ -73,7 +73,7 @@
         function sendData() {
             var text = document.getElementById('myInput').value
             var outshow = text[0] + " " + text.slice(1,5) + " " + text.slice(5,10) + text.slice(10,12) + " " + text[12]
-            document.getElementById("result").innerText = outshow
+            document.getElementById("result").value = outshow
         }
     </script>
 </body>
