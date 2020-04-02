@@ -53,10 +53,10 @@
         </div>
         <div class="row myrow mt-4">
             <div class="col-9">
-                <input class="mt-2 h-100 form-control text-secondary rounded centerbox" id="result" placeholder="ผลลัพธ์" disabled>
+                <h2 class="mt-2 h-100 p-2 bg-light text-secondary rounded centerbox" id="result">ผลลัพธ์</h2>
             </div>
             <div class="col-3">
-                <button onclick="copyToClipboard('result')" class="h-100 input-md btn btn-warning rounded">คัดลอก</button>
+                <button onclick="copyToClipboard('h2')" class="h-100 input-md btn btn-warning rounded">คัดลอก</button>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
         function copyToClipboard(element) {
             var $temp = $("<input>");
             $("body").append($temp);
-            $temp.val($(element).value).select();
+            $temp.val($(element).text()).select();
             document.execCommand("copy");
             $temp.remove();
             $("#copyText").text("Copied");
@@ -73,8 +73,8 @@
         function sendData() {
             var text = document.getElementById('myInput').value
             var outshow = text[0] + " " + text.slice(1,5) + " " + text.slice(5,10) + text.slice(10,12) + " " + text[12]
-            document.getElementById("result").value = outshow
+            document.getElementById("result").innerText = outshow.toString()
         }
     </script>
 </body>
-</html>
+</html> 
